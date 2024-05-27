@@ -1,12 +1,24 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class MainFrame extends JFrame {
     private MenuBackground background;
+    private GraphicsPanel panel;
 
     public MainFrame() {
         JFrame window = new JFrame();
-        window.setSize(50, 50);
-
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setSize(600, 600);
+        window.setLocationRelativeTo(null);
+        panel = new GraphicsPanel();
+        window.add(panel);
+        window.setVisible(true);
+        Thread thread = new Thread(String.valueOf(this));
+        thread.start();
     }
-    public
+    public void run() {
+        while (true) {
+            panel.repaint();
+        }
+    }
 }
