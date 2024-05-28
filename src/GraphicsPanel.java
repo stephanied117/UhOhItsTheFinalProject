@@ -5,17 +5,21 @@ import java.awt.event.*;
 public class GraphicsPanel extends JPanel implements KeyListener, MouseListener, ActionListener {
     private boolean[] pressedKeys;
     private MenuBackground background;
+    private PlayButton start;
     public GraphicsPanel() {
         background = new MenuBackground("src/R.jpg");
+        start = new PlayButton("src/button.png", 100, 100);
         pressedKeys = new boolean[128];
         addKeyListener(this);
         addMouseListener(this);
-        setFocusable(true); // this line of code + one below makes this panel active for keylistener events
-        requestFocusInWindow(); // see comment above
+        setFocusable(true);
+        requestFocusInWindow();
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background.getBackground(), background.getX(), background.getY(), null);
+        g.drawImage(start.getImage(), start.getX(), start.getY(), null);
+        if ()
     }
 
     @Override
@@ -40,9 +44,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        System.out.println(x + "," + y);
+
     }
 
     @Override

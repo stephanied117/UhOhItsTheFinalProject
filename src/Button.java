@@ -3,28 +3,29 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class MenuBackground {
-    private BufferedImage background;
+public class Button {
+    private BufferedImage image;
     private int x;
     private int y;
-
-    public MenuBackground(String png) {
+    public Button(String png, int x, int y) {
         try {
-            background = ImageIO.read(new File(png));
+            image = ImageIO.read(new File(png));
         } catch (IOException e) {
 
         }
-
-        this.x = 0;
-        this.y = 0;
+        this.x = x;
+        this.y = y;
     }
-    public BufferedImage getBackground() {
-        return background;
+    public BufferedImage getImage() {
+        return image;
     }
     public int getX() {
         return x;
     }
     public int getY() {
         return y;
+    }
+    public void clicked() {
+
     }
 }
