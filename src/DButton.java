@@ -10,12 +10,12 @@ public class DButton extends Button {
     public DButton(int x, int y) {
         super(null, x, y);
         options = new String[6];
-        options[0] = "";
-        options[1] = "";
-        options[2] = "";
-        options[3] = "";
-        options[4] = "";
-        options[5] = "";
+        options[0] = "src/DButtonImage.png";
+        options[1] = "src/DButtonImage.png";
+        options[2] = "src/DButtonImage.png";
+        options[3] = "src/DButtonImage.png";
+        options[4] = "src/DButtonImage.png";
+        options[5] = "src/DButtonImage.png";
         try {
             image = ImageIO.read(new File(options[0]));
         } catch (IOException e) {

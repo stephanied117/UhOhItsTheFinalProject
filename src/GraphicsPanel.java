@@ -6,9 +6,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
     private boolean[] pressedKeys;
     private MenuBackground background;
     private PlayButton start;
+    private NamePopUp title;
     public GraphicsPanel() {
-        background = new MenuBackground("src/R.jpg");
-        start = new PlayButton("src/button.png", 100, 100);
+        background = new MenuBackground("src/MenuBackgroundImage.jpg");
+        start = new PlayButton("src/PlayButtonImage.png", -30, 300);
+        title = new NamePopUp("src/NamePopUpImage.png", -60, -75);
         pressedKeys = new boolean[128];
         addKeyListener(this);
         addMouseListener(this);
@@ -19,6 +21,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
         super.paintComponent(g);
         g.drawImage(background.getBackground(), background.getX(), background.getY(), null);
         g.drawImage(start.getImage(), start.getX(), start.getY(), null);
+        g.drawImage(title.getImage(), title.getX(), title.getY(), null);
+        if () {
+
+        }
     }
 
     @Override
