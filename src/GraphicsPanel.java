@@ -22,9 +22,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
         g.drawImage(background.getBackground(), background.getX(), background.getY(), null);
         g.drawImage(start.getImage(), start.getX(), start.getY(), null);
         g.drawImage(title.getImage(), title.getX(), title.getY(), null);
-        if () {
-
-        }
     }
 
     @Override

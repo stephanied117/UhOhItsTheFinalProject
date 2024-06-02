@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -22,21 +23,5 @@ public class AButton extends Button {
 
         }
         currentImage = options[0];
-    }
-
-    public void clicked() {
-        if (currentImage.equals(options[0])) {
-
-        } else if (currentImage.equals(options[1])) {
-
-        } else if (currentImage.equals(options[2])) {
-
-        } else if (currentImage.equals(options[3])) {
-
-        } else if (currentImage.equals(options[4])) {
-
-        } else if (currentImage.equals(options[5])) {
-
-        }
     }
 }

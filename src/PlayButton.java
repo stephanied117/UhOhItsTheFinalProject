@@ -1,9 +1,11 @@
 import javax.imageio.ImageIO;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PlayButton extends Button {
+public class PlayButton extends Button implements MouseListener {
     private BufferedImage image; // button image
     public PlayButton(String png, int x, int y) {
         super(png, x, y);
@@ -15,8 +17,5 @@ public class PlayButton extends Button {
     }
     public BufferedImage getImage() {
         return image;
-    }
-    public void clicked() {
-
     }
 }
