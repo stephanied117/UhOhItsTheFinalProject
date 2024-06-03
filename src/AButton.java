@@ -9,7 +9,7 @@ public class AButton extends Button {
     private String currentImage;
     private String[] options; // list of strings of pngs
     public AButton(int x, int y) {
-        super(null, x, y);
+        super("", x, y);
         options = new String[6];
         options[0] = "src/AButtonImage.png";
         options[1] = "src/AButtonImage.png";

@@ -45,7 +45,7 @@ public class Button implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        System.out.println("omg it works?!");
+
     }
 
     @Override
