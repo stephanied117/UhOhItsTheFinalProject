@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame {
+public class MainFrame implements Runnable {
     private MenuBackground background;
     private GraphicsPanel panel;
 
@@ -13,7 +13,7 @@ public class MainFrame extends JFrame {
         panel = new GraphicsPanel();
         window.add(panel);
         window.setVisible(true);
-        Thread thread = new Thread(String.valueOf(this));
+        Thread thread = new Thread(this);
         thread.start();
     }
     public void run() {

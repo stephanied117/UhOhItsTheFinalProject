@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Button implements MouseListener {
+public class Button {
     private BufferedImage image;
     private int x;
     private int y;
@@ -22,39 +22,17 @@ public class Button implements MouseListener {
     public BufferedImage getImage() {
         return image;
     }
+    public void setImage(String newPng) {
+        try {
+            image = ImageIO.read(new File(newPng));
+        } catch (IOException e) {
+
+        }
+    }
     public int getX() {
         return x;
     }
     public int getY() {
         return y;
-    }
-    public Rectangle buttonRectangle() {
-        Rectangle b = new Rectangle(x, y, getImage().getWidth(), getImage().getHeight());
-        return b;
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 }

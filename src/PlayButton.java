@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PlayButton extends Button implements MouseListener {
+public class PlayButton extends Button {
     private BufferedImage image; // button image
     public PlayButton(String png, int x, int y) {
         super(png, x, y);
