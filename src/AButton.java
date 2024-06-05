@@ -5,11 +5,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class AButton extends Button {
-    private BufferedImage image; // button image
+    private BufferedImage temp;
     private String currentImage;
     private String[] options; // list of strings of pngs
     public AButton(int x, int y) {
-        super("", x, y);
+        super("src/AButtonImage.png", x, y);
         options = new String[6];
         options[0] = "src/AButtonImage.png";
         options[1] = "src/AButtonImage.png";
@@ -17,11 +17,14 @@ public class AButton extends Button {
         options[3] = "src/AButtonImage.png";
         options[4] = "src/AButtonImage.png";
         options[5] = "src/AButtonImage.png";
+        currentImage = options[0];
+    }
+    public BufferedImage getImage() {
         try {
-            image = ImageIO.read(new File(options[0]));
+            temp = ImageIO.read(new File(currentImage));
         } catch (IOException e) {
 
         }
-        currentImage = options[0];
+        return temp;
     }
 }

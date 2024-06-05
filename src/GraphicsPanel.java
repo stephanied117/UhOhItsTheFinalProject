@@ -6,11 +6,11 @@ import java.util.ArrayList;
 public class GraphicsPanel extends JPanel implements KeyListener, MouseListener, ActionListener {
     private boolean[] pressedKeys;
     private ArrayList popUps;
-    private ArrayList options;
-    private MenuBackground background;
+    private MenuBackground menuBkgd;
     private NamePopUp title;
     private PlayButton start;
     private boolean play;
+    private boolean choose;
     private boolean transition;
     private AButton a;
     private BButton b;
@@ -18,23 +18,23 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
     private DButton d;
     public GraphicsPanel() {
         popUps = new ArrayList<>();
-        options = new ArrayList<>();
-        background = new MenuBackground("src/MenuBackgroundImage.jpg");
+        menuBkgd = new MenuBackground("src/MenuBackgroundImage.png");
         title = new NamePopUp("src/NamePopUpImage.png", -60, -75);
         start = new PlayButton("src/PlayButtonImage.png", -30, 300);
-        popUps.add(background);
+        popUps.add(menuBkgd);
         popUps.add(title);
         popUps.add(start);
+        popUps.add(a);
+        popUps.add(b);
+        popUps.add(c);
+        popUps.add(d);
         play = false;
+        choose = false;
         transition = false;
-        a = new AButton(-30, 0);
-        b = new BButton(-30, 30);
-        c = new CButton(-30, 60);
-        d = new DButton(-30, 90);
-        options.add(a);
-        options.add(b);
-        options.add(c);
-        options.add(d);
+        a = new AButton(-30, -80);
+        b = new BButton(-30, 20);
+        c = new CButton(-30, 120);
+        d = new DButton(-30, 220);
         pressedKeys = new boolean[128];
         addKeyListener(this);
         addMouseListener(this);
@@ -43,14 +43,15 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(background.getBackground(), background.getX(), background.getY(), null);
         for (int i = 0; i < popUps.size(); i++) {
-            if (play == true && popUps.size() != 0) {
-                popUps.remove(i);
-                i++;
+            if (play == true && choose == true) {
+                g.drawImage(a.getImage(), a.getX(), a.getY(), null);
+                g.drawImage(b.getImage(), b.getX(), b.getY(), null);
+                g.drawImage(c.getImage(), c.getX(), c.getY(), null);
+                g.drawImage(d.getImage(), d.getX(), d.getY(), null);
             }
-            if (popUps.get(i) == background) {
-                g.drawImage(background.getBackground(), background.getX(), background.getY(), null);
+            if (popUps.get(i) == menuBkgd) {
+                g.drawImage(menuBkgd.getBackground(), menuBkgd.getX(), menuBkgd.getY(), null);
             }
             if (popUps.get(i) == title) {
                 g.drawImage(title.getImage(), title.getX(), title.getY(), null);
@@ -59,21 +60,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                 g.drawImage(start.getImage(), start.getX(), start.getY(), null);
             }
         }
-        for (int i = 0; i < options.size(); i++) {
-            if (options.get(i) == a) {
-                g.drawImage(a.getImage(), a.getX(), a.getY(), null);
-            }
-            if (options.get(i) == b) {
-                g.drawImage(b.getImage(), b.getX(), b.getY(), null);
-            }
-            if (options.get(i) == c) {
-                g.drawImage(c.getImage(), c.getX(), c.getY(), null);
-            }
-            if (options.get(i) == d) {
-                g.drawImage(d.getImage(), d.getX(), d.getY(), null);
-            }
-        }
-
     }
 
     @Override
@@ -98,7 +84,31 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
+        if (play == false && (choose == false) && (x > 150 && x < 420 && y > 380 && y < 475)) {
+            play = true;
+            choose = true;
+            for (int j = 0; j < 3; j++) {
+                popUps.remove(0);
+            }
+        }
+        if (play == true && choose == true && (x > 140 && x < 455 && y > 110 && y < 200)) {
+            System.out.println(x + ", " + y);
+            choose = false;
 
+        }
+        if (play == true && choose == true && (x > 140 && x < 455 && y > 210 && y < 300)) {
+            System.out.println(x + ", " + y);
+            choose = false;
+        }
+        if (play == true && choose == true && (x > 140 && x < 455 && y > 310 && y < 400)) {
+            System.out.println(x + ", " + y);
+        }
+        if (play == true && choose == true && (x > 140 && x < 455 && y > 410 && y < 500)) {
+            System.out.println(x + ", " + y);
+
+        }
     }
 
     @Override
@@ -108,11 +118,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        if (play == false && (x > 150 && x < 420 && y > 380 && y < 475)) {
-            play = true;
-        }
+
     }
 
     @Override
