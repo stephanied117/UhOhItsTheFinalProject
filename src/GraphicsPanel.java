@@ -4,18 +4,17 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class GraphicsPanel extends JPanel implements KeyListener, MouseListener, ActionListener {
-    private boolean[] pressedKeys;
     private ArrayList popUps;
     private MenuBackground menuBkgd;
     private NamePopUp title;
     private PlayButton start;
     private boolean play;
-    private boolean choose;
     private boolean transition;
     private AButton a;
     private BButton b;
     private CButton c;
     private DButton d;
+    private int tally;
     public GraphicsPanel() {
         popUps = new ArrayList<>();
         menuBkgd = new MenuBackground("src/MenuBackgroundImage.png");
@@ -29,13 +28,12 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
         popUps.add(c);
         popUps.add(d);
         play = false;
-        choose = false;
         transition = false;
         a = new AButton(-30, -80);
         b = new BButton(-30, 20);
         c = new CButton(-30, 120);
         d = new DButton(-30, 220);
-        pressedKeys = new boolean[128];
+        tally = 1;
         addKeyListener(this);
         addMouseListener(this);
         setFocusable(true);
@@ -44,7 +42,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (int i = 0; i < popUps.size(); i++) {
-            if (play == true && choose == true) {
+            if (play == true) {
                 g.drawImage(a.getImage(), a.getX(), a.getY(), null);
                 g.drawImage(b.getImage(), b.getX(), b.getY(), null);
                 g.drawImage(c.getImage(), c.getX(), c.getY(), null);
@@ -84,30 +82,20 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        if (play == false && (choose == false) && (x > 150 && x < 420 && y > 380 && y < 475)) {
+        Point clicked = e.getPoint();
+        if (start.buttonRectangle().contains(clicked)) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException l) {
+                Thread.currentThread().interrupt();
+            }
             play = true;
-            choose = true;
             for (int j = 0; j < 3; j++) {
                 popUps.remove(0);
             }
-        }
-        if (play == true && choose == true && (x > 140 && x < 455 && y > 110 && y < 200)) {
-            System.out.println(x + ", " + y);
-            choose = false;
-
-        }
-        if (play == true && choose == true && (x > 140 && x < 455 && y > 210 && y < 300)) {
-            System.out.println(x + ", " + y);
-            choose = false;
-        }
-        if (play == true && choose == true && (x > 140 && x < 455 && y > 310 && y < 400)) {
-            System.out.println(x + ", " + y);
-        }
-        if (play == true && choose == true && (x > 140 && x < 455 && y > 410 && y < 500)) {
-            System.out.println(x + ", " + y);
-
+        } else if (tally < 4 && (a.buttonRectangle().contains(clicked) || b.buttonRectangle().contains(clicked) || c.buttonRectangle().contains(clicked) || d.buttonRectangle().contains(clicked))) {
+            tally++;
+            play = false;
         }
     }
 

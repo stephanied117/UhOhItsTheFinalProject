@@ -29,6 +29,10 @@ public class Button {
 
         }
     }
+    public Rectangle buttonRectangle() {
+        Rectangle rect = new Rectangle(x, y, getImage().getHeight(), getImage().getHeight());
+        return rect;
+    }
     public int getX() {
         return x;
     }

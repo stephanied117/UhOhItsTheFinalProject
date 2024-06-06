@@ -7,26 +7,43 @@ import java.util.ArrayList;
 public class Animation {
     private BufferedImage currentFrame;
     private String currentImage;
-    private ArrayList oneA;
-    private ArrayList oneB;
-    private ArrayList oneC;
-    private ArrayList oneD;
-    private ArrayList twoA;
-    private ArrayList twoB;
-    private ArrayList twoC;
-    private ArrayList twoD;
-    private ArrayList threeA;
-    private ArrayList threeB;
-    private ArrayList threeC;
-    private ArrayList threeD;
-    private ArrayList fourA;
-    private ArrayList fourB;
-    private ArrayList fourC;
-    private ArrayList fourD;
+    private ArrayList allAnimations;
+    private ArrayList<String> oneA;
+    private ArrayList<String> oneB;
+    private ArrayList<String> oneC;
+    private ArrayList<String> oneD;
+    private ArrayList<String> twoA;
+    private ArrayList<String> twoB;
+    private ArrayList<String> twoC;
+    private ArrayList<String> twoD;
+    private ArrayList<String> threeA;
+    private ArrayList<String> threeB;
+    private ArrayList<String> threeC;
+    private ArrayList<String> threeD;
+    private ArrayList<String> fourA;
+    private ArrayList<String> fourB;
+    private ArrayList<String> fourC;
+    private ArrayList<String> fourD;
 
     public Animation() {
         currentImage = "";
-
+        allAnimations = new ArrayList<>();
+        allAnimations.add(oneA);
+        allAnimations.add(twoA);
+        allAnimations.add(threeA);
+        allAnimations.add(fourA);
+        allAnimations.add(oneB);
+        allAnimations.add(twoB);
+        allAnimations.add(threeB);
+        allAnimations.add(fourB);
+        allAnimations.add(oneC);
+        allAnimations.add(twoC);
+        allAnimations.add(threeC);
+        allAnimations.add(fourC);
+        allAnimations.add(oneD);
+        allAnimations.add(twoD);
+        allAnimations.add(threeD);
+        allAnimations.add(fourD);
     }
     public BufferedImage getAniFrame() {
         try {
