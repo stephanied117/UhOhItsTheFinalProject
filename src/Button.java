@@ -8,9 +8,11 @@ import java.io.IOException;
 
 public class Button {
     private BufferedImage image;
+    private String imageString;
     private int x;
     private int y;
     public Button(String png, int x, int y) {
+        imageString = png;
         try {
             image = ImageIO.read(new File(png));
         } catch (IOException e) {
@@ -21,6 +23,9 @@ public class Button {
     }
     public BufferedImage getImage() {
         return image;
+    }
+    public String getImageString() {
+        return imageString;
     }
     public void setImage(String newPng) {
         try {

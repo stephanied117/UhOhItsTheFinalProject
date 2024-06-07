@@ -44,13 +44,85 @@ public class Animation {
         allAnimations.add(twoD);
         allAnimations.add(threeD);
         allAnimations.add(fourD);
+        oneA.add("");
+        twoA.add("");
+        threeA.add("");
+        fourA.add("");
+        oneB.add("");
+        twoB.add("");
+        threeB.add("");
+        fourB.add("");
+        oneC.add("");
+        twoC.add("");
+        threeC.add("");
+        fourC.add("");
+        oneD.add("");
+        twoD.add("");
+        threeD.add("");
+        fourD.add("");
     }
-    public BufferedImage getAniFrame() {
-        try {
-            currentFrame = ImageIO.read(new File(currentImage));
-        } catch (IOException e) {
+    public ArrayList<String> getOneA() {
+        return oneA;
+    }
+    public ArrayList<String> getTwoA() {
+        return twoA;
+    }
+    public ArrayList<String> getThreeA() {
+        return threeA;
+    }
+    public ArrayList<String> getFourA() {
+        return fourA;
+    }
+    public ArrayList<String> getOneB() {
+        return oneB;
+    }
+    public ArrayList<String> getTwoB() {
+        return twoA;
+    }
+    public ArrayList<String> getThreeB() {
+        return threeA;
+    }
+    public ArrayList<String> getFourB() {
+        return fourA;
+    }
+    public ArrayList<String> getOneC() {
+        return oneB;
+    }
+    public ArrayList<String> getTwoC() {
+        return twoA;
+    }
+    public ArrayList<String> getThreeC() {
+        return threeA;
+    }
+    public ArrayList<String> getFourC() {
+        return fourA;
+    }
+    public ArrayList<String> getOneD() {
+        return oneB;
+    }
+    public ArrayList<String> getTwoD() {
+        return twoA;
+    }
+    public ArrayList<String> getThreeD() {
+        return threeA;
+    }
+    public ArrayList<String> getFourD() {
+        return fourA;
+    }
+    public BufferedImage ani(ArrayList<String> a) {
+        for (int i = 0; i < a.size(); i++) {
+            try {
+                currentFrame = ImageIO.read(new File(a.get(i)));
+            } catch (IOException e) {
 
+            }
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException l) {
+                Thread.currentThread().interrupt();
+            }
+            return currentFrame;
         }
-        return currentFrame;
+        return null;
     }
 }
