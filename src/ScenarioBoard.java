@@ -3,27 +3,29 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class MenuBackground {
-    private BufferedImage background;
+public class ScenarioBoard {
+    private BufferedImage board;
     private int x;
     private int y;
 
-    public MenuBackground(String png) {
+    public ScenarioBoard(String png) {
         try {
-            background = ImageIO.read(new File(png));
+            board = ImageIO.read(new File(png));
         } catch (IOException e) {
 
         }
+        this.x = -330;
+        this.y = 145;
+    }
 
-        this.x = 50;
-        this.y = 50;
+    public BufferedImage getBoard() {
+        return board;
     }
-    public BufferedImage getBackground() {
-        return background;
-    }
+
     public int getX() {
         return x;
     }
+
     public int getY() {
         return y;
     }

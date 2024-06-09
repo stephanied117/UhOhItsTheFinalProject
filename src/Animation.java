@@ -44,6 +44,7 @@ public class Animation {
         allAnimations.add(twoD);
         allAnimations.add(threeD);
         allAnimations.add(fourD);
+        /*
         oneA.add("");
         twoA.add("");
         threeA.add("");
@@ -60,6 +61,8 @@ public class Animation {
         twoD.add("");
         threeD.add("");
         fourD.add("");
+
+         */
     }
     public ArrayList<String> getOneA() {
         return oneA;
