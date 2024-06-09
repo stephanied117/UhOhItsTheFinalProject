@@ -85,7 +85,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                     g.drawImage(play.getImage(), play.getX(), play.getY(), null); // play button
                 }
                 if (transition) {
-
+                    start = true;
+                    transition = false;
                 }
             } else if (start) {
                 /* game play */
@@ -93,65 +94,70 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                     if (popUps.get(i) == board) {
                         g.drawImage(board.getBoard(), board.getX(), board.getY(), null); // board
                     }
-                    if (popUps.get(i) == board) {
+                    if (popUps.get(i) == a) {
                         g.drawImage(a.getImage(), a.getX(), a.getY(), null); // a
                     }
-                    if (popUps.get(i) == board) {
+                    if (popUps.get(i) == b) {
                         g.drawImage(b.getImage(), b.getX(), b.getY(), null); // b
                     }
-                    if (popUps.get(i) == board) {
+                    if (popUps.get(i) == c) {
                         g.drawImage(c.getImage(), c.getX(), c.getY(), null); // c
                     }
-                    if (popUps.get(i) == board) {
+                    if (popUps.get(i) == d) {
                         g.drawImage(d.getImage(), d.getX(), d.getY(), null); // d
                     }
-                } else if (animation && tally == 1) { // scenario 1
-                    if (optionA) {
-                        bobette.subtract();
-                    } else if (optionB) {
+                } else if (animation) {
+                    if (tally == 1) { // scenario 1
+                        if (optionA) {
+                            bobette.subtract();
+                        } else if (optionB) {
 
-                    } else if (optionC) {
-                        bobette.subtract();
-                    } else if (optionD) {
-                        bobette.subtractMore();
+                        } else if (optionC) {
+                            bobette.subtract();
+                        } else if (optionD) {
+                            bobette.subtractMore();
+                        }
                     }
-                } else if (animation && tally == 2) { // scenario 2
-                    if (optionA) {
+                    if (tally == 2) { // scenario 2
+                        if (optionA) {
 
-                    } else if (optionB) {
-                        bobette.subtract();
-                    } else if (optionC) {
-                        bobette.subtractMore();
-                    } else if (optionD) {
-                        bobette.subtract();
+                        } else if (optionB) {
+                            bobette.subtract();
+                        } else if (optionC) {
+                            bobette.subtractMore();
+                        } else if (optionD) {
+                            bobette.subtract();
+                        }
                     }
-                } else if (animation && tally == 3) { // scenario 3
-                    if (optionA) {
-                        bobette.subtract();
-                    } else if (optionB) {
-                        bobette.subtractMore();
-                    } else if (optionC) {
+                    if (tally == 3) { // scenario 3
+                        if (optionA) {
+                            bobette.subtract();
+                        } else if (optionB) {
+                            bobette.subtractMore();
+                        } else if (optionC) {
 
-                    } else if (optionD) {
-                        bobette.subtract();
+                        } else if (optionD) {
+                            bobette.subtract();
+                        }
                     }
-                } else if (animation && tally == 4) { // scenario 4
-                    if (optionA) {
-                        bobette.subtractMore();
-                    } else if (optionB) {
-                        bobette.subtract();
-                    } else if (optionC) {
-                        bobette.subtract();
-                    } else if (optionD) {
+                    if (tally == 4) { // scenario 4
+                        if (optionA) {
+                            bobette.subtractMore();
+                        } else if (optionB) {
+                            bobette.subtract();
+                        } else if (optionC) {
+                            bobette.subtract();
+                        } else if (optionD) {
 
+                        }
                     }
-                } else if (tally >= 5) { // end results
-                    if (bobette.getPoints() == 0) {
+                    if (tally >= 5) { // end results
+                        if (bobette.getPoints() == 0) {
 
-                    } else if (bobette.getPoints() < 0 && bobette.getPoints() > -6) {
+                        } else if (bobette.getPoints() < 0 && bobette.getPoints() > -6) {
 
-                    } else if (bobette.getPoints() < -5 && bobette.getPoints() > -11) {
-
+                        } else if (bobette.getPoints() < -5 && bobette.getPoints() > -11) {
+                        }
                     }
                 }
             }
@@ -209,16 +215,5 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
     @Override
     public void mouseExited(MouseEvent e) {
 
-    }
-    public void transitionTime(Graphics g) {
-        for (int i = 0; i < flash.getFrames().size(); i++) {
-            g.drawImage(flash.getFrames().get(i), flash.getX(), flash.getY(), null);
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException l) {
-                Thread.currentThread().interrupt();
-            }
-            flash.getFrames().remove(flash.getFrames().get(i));
-        }
     }
 }
