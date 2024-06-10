@@ -24,6 +24,8 @@ public class Animation {
     private ArrayList<String> fourB;
     private ArrayList<String> fourC;
     private ArrayList<String> fourD;
+    private int x;
+    private int y;
 
     public Animation() {
         currentImage = "";
@@ -63,6 +65,8 @@ public class Animation {
         fourD.add("");
 
          */
+        x = 0;
+        y = 0;
     }
     public ArrayList<String> getOneA() {
         return oneA;
@@ -112,20 +116,20 @@ public class Animation {
     public ArrayList<String> getFourD() {
         return fourA;
     }
-    public BufferedImage ani(ArrayList<String> a) {
-        for (int i = 0; i < a.size(); i++) {
-            try {
-                currentFrame = ImageIO.read(new File(a.get(i)));
-            } catch (IOException e) {
+    public void setFrame(ArrayList<String> list, int i) {
+        try {
+            currentFrame = ImageIO.read(new File(list.get(i)));
+        } catch (IOException e) {
 
-            }
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException l) {
-                Thread.currentThread().interrupt();
-            }
-            return currentFrame;
         }
-        return null;
+    }
+    public BufferedImage getCurrentFrame() {
+        return currentFrame;
+    }
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
     }
 }

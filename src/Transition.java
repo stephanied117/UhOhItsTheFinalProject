@@ -43,10 +43,17 @@ public class Transition {
     public int getY() {
         return y;
     }
+    public BufferedImage getCurrentFrame() {
+        return currentFrame;
+    }
     public ArrayList<BufferedImage> getFrames() {
         return frames;
     }
-    public BufferedImage getCurrentFrame() {
-        return currentFrame;
+    public void setFrame(int i) {
+        try {
+            currentFrame = ImageIO.read(new File(frameStrings.get(i)));
+        } catch (IOException e) {
+
+        }
     }
 }

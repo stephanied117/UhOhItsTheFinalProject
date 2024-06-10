@@ -10,6 +10,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
     private MenuBackground menuBkgd;
     private NamePopUp name;
     private PlayButton play;
+    private GameBackground gameBkgd;
     private ScenarioBoard board;
     private Animation display;
     private AButton a;
@@ -37,6 +38,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
         play = new PlayButton("src/PlayButtonImage.png", -30, 300); // play button ui
 
         /* game play */
+        gameBkgd = new GameBackground();
         board = new ScenarioBoard("src/ScenarioBoardImage.png"); // ui box containing scenarios & options
         a = new AButton(240, 125); // option a
         b = new BButton(240, 190); // option b
@@ -47,6 +49,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
         popUps.add(menuBkgd);
         popUps.add(name);
         popUps.add(play);
+        popUps.add(gameBkgd);
         popUps.add(board);
         popUps.add(a);
         popUps.add(b);
@@ -84,13 +87,34 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                 if (popUps.get(i) == play) {
                     g.drawImage(play.getImage(), play.getX(), play.getY(), null); // play button
                 }
-                if (transition) {
+                if (transition && transFrameTick < flash.getFrames().size()) {
+                    transFrameTick++;
+                    flash.setFrame(transFrameTick);
+                    g.drawImage(flash.getCurrentFrame(), flash.getX(), flash.getY(), null);
+                }
+                if (transFrameTick == flash.getFrames().size()) {
                     start = true;
                     transition = false;
                 }
             } else if (start) {
                 /* game play */
                 if (!animation && tally < 5) {
+                    /*
+                    if (popUps.get(i) == gameBkgd && tally == 1) {
+                        gameBkgd.setBackground(0);
+                        g.drawImage(gameBkgd.getBackground(), gameBkgd.getX(), gameBkgd.getY(), null); // background
+                    } else if (popUps.get(i) == gameBkgd && tally == 2) {
+                        gameBkgd.setBackground(1);
+                        g.drawImage(gameBkgd.getBackground(), gameBkgd.getX(), gameBkgd.getY(), null); // background
+                    } else if (popUps.get(i) == gameBkgd && tally == 3) {
+                        gameBkgd.setBackground(2);
+                        g.drawImage(gameBkgd.getBackground(), gameBkgd.getX(), gameBkgd.getY(), null); // background
+                    } else if (popUps.get(i) == gameBkgd && tally == 4) {
+                        gameBkgd.setBackground(3);
+                        g.drawImage(gameBkgd.getBackground(), gameBkgd.getX(), gameBkgd.getY(), null); // background
+                    }
+
+                     */
                     if (popUps.get(i) == board) {
                         g.drawImage(board.getBoard(), board.getX(), board.getY(), null); // board
                     }
@@ -110,45 +134,307 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                     if (tally == 1) { // scenario 1
                         if (optionA) {
                             bobette.subtract();
-                        } else if (optionB) {
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
 
+                             */
+                        } else if (optionB) {
+                            /*
+                            for (int j = 0; j < display.getOneB().size(); j++) {
+                                if (j == display.getOneB().size()) {
+                                    optionB = false;
+                                } else {
+                                    display.setFrame(display.getOneB(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
+                            optionB = false;
+                            animation = false;
                         } else if (optionC) {
                             bobette.subtract();
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
                         } else if (optionD) {
                             bobette.subtractMore();
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
                         }
                     }
                     if (tally == 2) { // scenario 2
                         if (optionA) {
+/*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
 
+                             */
                         } else if (optionB) {
                             bobette.subtract();
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
+                            optionB = false;
+                            animation = false;
                         } else if (optionC) {
                             bobette.subtractMore();
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
                         } else if (optionD) {
                             bobette.subtract();
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
                         }
                     }
                     if (tally == 3) { // scenario 3
                         if (optionA) {
                             bobette.subtract();
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
                         } else if (optionB) {
                             bobette.subtractMore();
-                        } else if (optionC) {
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
 
+                             */
+                            optionB = false;
+                            animation = false;
+                        } else if (optionC) {
+/*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
                         } else if (optionD) {
                             bobette.subtract();
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
                         }
                     }
                     if (tally == 4) { // scenario 4
                         if (optionA) {
                             bobette.subtractMore();
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
                         } else if (optionB) {
                             bobette.subtract();
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
+                            optionB = false;
+                            animation = false;
                         } else if (optionC) {
                             bobette.subtract();
-                        } else if (optionD) {
+                            /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
 
+                             */
+                        } else if (optionD) {
+                    /*
+                            for (int j = 0; j < display.getOneA().size(); j++) {
+                                if (j == display.getOneA().size()) {
+                                    optionA = false;
+                                } else {
+                                    display.setFrame(display.getOneA(), j);
+                                    g.drawImage(display.getCurrentFrame(), display.getX(), display.getY(), null);
+                                    try {
+                                        Thread.sleep(1500);
+                                    } catch (InterruptedException l) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+
+                             */
+                            optionD = false;
+                            animation = false;
                         }
                     }
                     if (tally >= 5) { // end results
