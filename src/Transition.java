@@ -22,8 +22,15 @@ public class Transition {
         frameStrings.add("src/Transition8.png");
         frameStrings.add("src/Transition9.png");
         frameStrings.add("src/Transition10.png");
-        frameStrings.add("src/Transition11.png");
-        frameStrings.add("src/Transition12.png");
+        frameStrings.add("src/Transition9.png");
+        frameStrings.add("src/Transition8.png");
+        frameStrings.add("src/Transition7.png");
+        frameStrings.add("src/Transition6.png");
+        frameStrings.add("src/Transition5.png");
+        frameStrings.add("src/Transition4.png");
+        frameStrings.add("src/Transition3.png");
+        frameStrings.add("src/Transition2.png");
+        frameStrings.add("src/Transition1.png");
         frames = new ArrayList<>();
         for (int i = 0; i < frameStrings.size(); i++) {
             try {

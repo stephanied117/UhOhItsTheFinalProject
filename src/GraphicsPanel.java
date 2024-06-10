@@ -92,8 +92,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                     flash.setFrame(transFrameTick);
                     g.drawImage(flash.getCurrentFrame(), flash.getX(), flash.getY(), null);
                 }
-                if (transFrameTick == flash.getFrames().size()) {
+                if (transFrameTick == flash.getFrames().size() / 2) {
                     start = true;
+                }
+                if (transFrameTick == flash.getFrames().size()) {
                     transition = false;
                 }
             } else if (start) {
