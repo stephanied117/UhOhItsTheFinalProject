@@ -176,16 +176,16 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                     }
 
                     if (popUps.get(i) == d && tally == 1) {
-                        c.setImage(0);
+                        d.setImage(0);
                         g.drawImage(d.getImage(), d.getX(), d.getY(), null); // d
                     } else if (popUps.get(i) == d && tally == 2) {
-                        c.setImage(1);
+                        d.setImage(1);
                         g.drawImage(d.getImage(), d.getX(), d.getY(), null); // d
                     } else if (popUps.get(i) == d && tally == 3) {
-                        c.setImage(2);
+                        d.setImage(2);
                         g.drawImage(d.getImage(), d.getX(), d.getY(), null); // d
                     } else if (popUps.get(i) == d && tally == 4) {
-                        c.setImage(3);
+                        d.setImage(3);
                         g.drawImage(d.getImage(), d.getX(), d.getY(), null); // d
                     }
                 } else if (animation) {
@@ -293,10 +293,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                         if (bobette.getPoints() == 0) {
                             bobette.setFlag(0);
                             g.drawImage(bobette.getFlag(), 0, 0, null);
-                        } else if (bobette.getPoints() < 0 && bobette.getPoints() > -6) {
+                        } else if (bobette.getPoints() < 0 && bobette.getPoints() > -5) {
                             bobette.setFlag(1);
                             g.drawImage(bobette.getFlag(), 0, 0, null);
-                        } else if (bobette.getPoints() < -5 && bobette.getPoints() > -11) {
+                        } else if (bobette.getPoints() < -6 && bobette.getPoints() > -13) {
                             bobette.setFlag(2);
                             g.drawImage(bobette.getFlag(), 0, 0, null);
                         }
