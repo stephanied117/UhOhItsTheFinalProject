@@ -8,14 +8,12 @@ public class DButton extends Button {
     private String currentImage;
     private String[] options; // list of strings of pngs
     public DButton(int x, int y) {
-        super("src/DButtonImage.png", x, y);
+        super("src/DButton1.png", x, y);
         options = new String[6];
-        options[0] = "src/DButtonImage.png";
-        options[1] = "src/DButtonImage.png";
-        options[2] = "src/DButtonImage.png";
-        options[3] = "src/DButtonImage.png";
-        options[4] = "src/DButtonImage.png";
-        options[5] = "src/DButtonImage.png";
+        options[0] = "src/DButton1.png";
+        options[1] = "src/DButton2.png";
+        options[2] = "src/DButton3.png";
+        options[3] = "src/DButton4.png";
         currentImage = options[0];
     }
     public BufferedImage getImage() {
@@ -25,5 +23,8 @@ public class DButton extends Button {
 
         }
         return temp;
+    }
+    public void setImage(int i) {
+        currentImage = options[i];
     }
 }

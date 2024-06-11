@@ -15,8 +15,8 @@ public class MenuBackground {
 
         }
 
-        this.x = 50;
-        this.y = 50;
+        this.x = 0;
+        this.y = 0;
     }
     public BufferedImage getBackground() {
         return background;

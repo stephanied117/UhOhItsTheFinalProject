@@ -12,17 +12,17 @@ public class GameBackground {
 
     public GameBackground() {
         bkgdList = new ArrayList<>();
-        bkgdList.add("");
-        bkgdList.add("");
-        bkgdList.add("");
-        bkgdList.add("");
+        bkgdList.add("src/GameBackground1.png");
+        bkgdList.add("src/GameBackground2.png");
+        bkgdList.add("src/GameBackground3.png");
+        bkgdList.add("src/GameBackground4.png");
         try {
             background = ImageIO.read(new File(bkgdList.get(0)));
         } catch (IOException e) {
 
         }
-        this.x = 50;
-        this.y = 50;
+        this.x = 0;
+        this.y = 0;
     }
     public BufferedImage getBackground() {
         return background;
